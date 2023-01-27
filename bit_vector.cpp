@@ -18,7 +18,7 @@ bit_vector::bit_vector(bit_vector&& rhs)
 {
     size = rhs.size;
     array = new int[size/sizeof(int)+1];
-    for(int i = 0; i < size; ++i)
+    for(int i = 0; i < size/sizeof(int)+1; ++i)
     {
         array[i] = rhs.array[i];
     }
@@ -28,7 +28,7 @@ bit_vector::bit_vector(const bit_vector& rhs)
 {
     size = rhs.size;
     array = new int[size/sizeof(int)+1];
-    for(int i = 0; i < size; ++i)
+    for(int i = 0; i < size/sizeof(int)+1; ++i)
     {
         array[i] = rhs.array[i];
     }
@@ -60,16 +60,4 @@ short bit_vector::get(int pos)
         return -1;
     }
     return array[pos/sizeof(int)] & (1 << (pos%sizeof(int)));    
-}
-
-int main()
-{
-    bit_vector obj(5);
-    obj.set(1, 4);
-    std::cout << obj.get(4) << std::endl;
-    obj.set(0, 4);
-    std::cout << obj.get(4) << std::endl;
-    obj.set(1, 4);
-    std::cout << obj.get(7) << std::endl;
-    return 0;
 }
