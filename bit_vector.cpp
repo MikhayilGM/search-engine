@@ -1,5 +1,4 @@
 #include "bit_vector.h"
-#include <iostream>
 
 bit_vector::bit_vector() : array(nullptr), size(0)
 {
